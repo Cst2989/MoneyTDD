@@ -4,17 +4,18 @@ describe('Dollar', () => {
 
     it('should multiply', () => {
         const five = new Dollar(5);
-        let product = five.times(2);
-        expect(product.ammount).toEqual(10);
+        expect(new Dollar(10)).toEqual(five.times(2));
     });
 
     it('should multiply twice',() => {
       const five = new Dollar(5);
+      expect(new Dollar(10)).toEqual(five.times(2));
+      expect(new Dollar(15)).toEqual(five.times(3));
+    })
 
-      let product = five.times(2);
-      
-      expect(product.ammount).toEqual(10);
-      product = five.times(3);
-      expect(product.ammount).toEqual(15);
+    it('should be equal', () => {
+      let five = new Dollar(5);
+      expect(five.equals(new Dollar(5))).toBeTruthy();
+      expect(five.equals(new Dollar(6))).toBeFalsy();
     })
 });
