@@ -4,7 +4,7 @@ module.exports = function(config) {
     singleRun: false,
 
     browsers: [
-      'PhantomJS'
+      'ChromeHeadless'
     ],
 
     frameworks: [
@@ -28,7 +28,7 @@ module.exports = function(config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-mocha-reporter'),
-      require('karma-phantomjs-launcher'),
+      require('karma-chrome-launcher'),
       require('karma-webpack')
     ]
   });

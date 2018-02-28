@@ -1,6 +1,6 @@
-import { Franc } from './franc';
-import { Dollar } from './dollar';
 import { Money } from './money';
+import { Franc } from './money';
+import { Dollar } from './dollar';
 
 describe('Money', () => {
     it('should not be equal', () => {
@@ -23,14 +23,34 @@ describe('Money', () => {
     })
 
     it('should be equal', () => {
-      let five: Money  = Money.dollar(5);
-      let six: Money = Money.franc(5);
+      let fiveDollar: Money  = Money.dollar(5);
+      let fiveFranc: Money = Money.franc(5);
 
-      expect(five.equals(Money.dollar(5))).toBeTruthy();
-      expect(five.equals(Money.dollar(6))).toBeFalsy();
+      expect(fiveDollar.equals(Money.dollar(5))).toBeTruthy();
+      expect(fiveDollar.equals(Money.dollar(6))).toBeFalsy();
 
-      expect(six.equals(Money.franc(5))).toBeTruthy();
-      expect(six.equals(Money.franc(6))).toBeFalsy();
-      expect(six.equals(Money.dollar(5))).toBeFalsy();
+      expect(fiveFranc.equals(Money.franc(5))).toBeTruthy();
+      expect(fiveFranc.equals(Money.franc(6))).toBeFalsy();
+      expect(fiveFranc.equals(Money.dollar(5))).toBeFalsy();
+    })
+});
+
+describe('Franc', () => {
+
+    it('should multiply', () => {
+        const five = new Franc(5);
+        expect(new Franc(10)).toEqual(five.times(2));
+    });
+
+    it('should multiply twice',() => {
+      const five = new Franc(5);
+      expect(new Franc(10)).toEqual(five.times(2));
+      expect(new Franc(15)).toEqual(five.times(3));
+    })
+
+    it('should be equal', () => {
+      let five = new Franc(5);
+      expect(five.equals(new Franc(5))).toBeTruthy();
+      expect(five.equals(new Franc(6))).toBeFalsy();
     })
 });
